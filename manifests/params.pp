@@ -7,9 +7,10 @@ class nessus::params {
   {
     'redhat':
     {
+      $package_provider='rpm'
       case $::operatingsystemrelease
       {
-        /^[5-7].*$/:
+        /^[6-7].*$/:
         {
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
@@ -17,6 +18,7 @@ class nessus::params {
     }
     'Debian':
     {
+      $package_provider='dpkg'
       case $::operatingsystem
       {
         'Ubuntu':
