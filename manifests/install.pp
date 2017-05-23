@@ -10,8 +10,8 @@ class nessus::install inherits nessus {
       }
 
       exec { 'wget nessus pkg':
-        command => "wget ${package_url} -O ${srcdir}/nessus.${nessus::params::}",
-        creates => "${srcdir}/nessus.${nessus::params::}",
+        command => "wget ${package_url} -O ${srcdir}/nessus.${nessus::params::package_provider}",
+        creates => "${srcdir}/nessus.${nessus::params::package_provider}",
         require => Exec['eyp-nessus which wget'],
         before  => Package[$nessus::params::package_name],
       }
@@ -19,7 +19,7 @@ class nessus::install inherits nessus {
       package { $nessus::params::package_name:
         ensure   => $nessus::package_ensure,
         provider => $nessus::params::package_provider,
-        source   => "${srcdir}/nessus.${nessus::params::}",
+        source   => "${srcdir}/nessus.${nessus::params::package_provider}",
         require  => Exec['wget nessus pkg'],
       }
     }
