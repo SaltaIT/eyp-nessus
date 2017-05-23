@@ -16,8 +16,10 @@ class nessus::service inherits nessus {
     if($nessus::manage_service)
     {
       service { $nessus::params::service_name:
-        ensure => $nessus::service_ensure,
-        enable => $nessus::service_enable,
+        ensure     => $nessus::service_ensure,
+        enable     => $nessus::service_enable,
+        hasstatus  => true,
+        hasrestart => true,
       }
     }
   }
