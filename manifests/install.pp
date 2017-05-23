@@ -1,5 +1,9 @@
 class nessus::install inherits nessus {
 
+  Exec {
+    path => '/usr/sbin:/usr/bin:/sbin:/bin',
+  }
+
   if($nessus::manage_package)
   {
     if($package_url!=undef)
