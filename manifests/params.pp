@@ -1,6 +1,6 @@
 class nessus::params {
 
-  $package_name='nessus'
+  $package_name='Nessus'
   $service_name='nessusd'
 
   case $::osfamily
